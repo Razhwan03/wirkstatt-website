@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo: Elektro Nordlicht — Beispielprojekt von Wirkstatt</title>
+<meta name="description" content="Demo-Projekt von Wirkstatt: fiktiver Webauftritt für einen Handwerksbetrieb. Kein echtes Unternehmen.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  :root { --accent: #d99a2b; --accent-soft: #fbf0d9; --accent-dark: #b17c1b; }
+  .hw-hero { background: linear-gradient(160deg,#161d24,#2c3843); color:#fff; padding:90px 0 70px; }
+  .hw-hero p.lead { color:#c3ccd3; max-width:520px; }
+  .hw-list { list-style:none; margin:0; padding:0; }
+  .hw-list li { display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid var(--line); }
+  .hw-list li:last-child{ border-bottom:1px solid var(--line); }
+  .hw-list svg { flex-shrink:0; color:var(--accent); margin-top:3px; }
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  Demo-Projekt von <strong>Wirkstatt</strong> — kein echtes Unternehmen. <a href="../index.html#projekte">Zurück zur Wirkstatt-Webseite</a>
+</div>
+
+<section class="hw-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:#e8bd6c;">Elektrotechnik · Beispielprojekt</span>
+    <h1>Elektro Nordlicht</h1>
+    <p class="lead">Zuverlässige Elektroinstallation für Privathaushalte und Gewerbe. Meisterbetrieb mit über 15 Jahren Erfahrung in der Region.</p>
+    <div class="cta-row">
+      <a href="#leistungen" class="btn btn-invert">Leistungen ansehen</a>
+      <a href="#kontakt" class="btn btn-ghost-invert">Angebot anfragen</a>
+    </div>
+  </div>
+</section>
+
+<section id="leistungen" class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Leistungen</span>
+      <h2>Elektroarbeiten aus einer Hand</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>Elektroinstallation</h3>
+        <p>Neubau, Sanierung und Modernisierung bestehender Elektroanlagen.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3>Notdienst</h3>
+        <p>Schnelle Hilfe bei Stromausfall und akuten Elektroproblemen.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16"/></svg></div>
+        <h3>Smart Home</h3>
+        <p>Vernetzte Beleuchtung und Steuerung für ein modernes Zuhause.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container" style="max-width:640px;">
+    <div class="section-head center">
+      <span class="eyebrow">Warum Elektro Nordlicht</span>
+      <h2>Handwerk, dem Sie vertrauen können</h2>
+    </div>
+    <ul class="hw-list">
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Meisterbetrieb mit eingetragener Handwerksrolle</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Feste Termine, transparente Kostenvoranschläge</li>
+      <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Regionale Einsätze, kurze Anfahrtswege</li>
+    </ul>
+  </div>
+</section>
+
+<section id="kontakt" class="section">
+  <div class="container">
+    <div class="contact-panel" style="background:#161d24;">
+      <div>
+        <span class="eyebrow" style="color:#e8bd6c;">Kontakt</span>
+        <h2 style="color:#fff;">Anfrage stellen</h2>
+        <p>Schildern Sie kurz Ihr Anliegen, wir melden uns mit einem Termin zurück.</p>
+      </div>
+      <div class="contact-card" style="background:#1e262e; border-color:#333f4a;">
+        <div class="contact-row" style="border-color:#333f4a;"><div><span class="label">Telefon</span>0000 / 000000</div></div>
+        <div class="contact-row" style="border-color:#333f4a;"><div><span class="label">E-Mail</span>info@beispiel-handwerk.de</div></div>
+        <div class="contact-row" style="border-color:#333f4a;"><div><span class="label">Servicegebiet</span>Musterstadt und Umgebung</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" style="background:#10151a;">
+  <div class="container footer-bottom">
+    <span>Elektro Nordlicht — fiktives Beispielprojekt</span>
+    <span><a href="../index.html">Erstellt von Wirkstatt</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

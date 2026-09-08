@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo: Café Sonnenseite — Beispielprojekt von Wirkstatt</title>
+<meta name="description" content="Demo-Projekt von Wirkstatt: fiktiver Webauftritt für ein Café. Kein echtes Unternehmen.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  :root { --accent: #c2542a; --accent-soft: #fbe7dc; --accent-dark: #9c401f; }
+  body { font-family: var(--font); }
+  .cafe-hero { background: linear-gradient(160deg,#2c1a12,#603518); color: #fff; padding: 90px 0 70px; }
+  .cafe-hero p.lead { color: #f0dcce; max-width: 520px; }
+  .menu-item { display:flex; justify-content:space-between; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .menu-item:last-child{border-bottom:1px solid var(--line);}
+  .menu-item .name{font-weight:700;}
+  .menu-item .desc{color:var(--text-soft); font-size:0.9rem; margin-top:2px;}
+  .menu-item .price{font-weight:700; color:var(--accent); white-space:nowrap;}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  Demo-Projekt von <strong>Wirkstatt</strong> — kein echtes Unternehmen. <a href="../index.html#projekte">Zurück zur Wirkstatt-Webseite</a>
+</div>
+
+<section class="cafe-hero">
+  <div class="container">
+    <span class="eyebrow" style="color:#f0b088;">Café · Beispielprojekt</span>
+    <h1>Café Sonnenseite</h1>
+    <p class="lead">Frisch geröstet, hausgemacht, mit Blick auf den Marktplatz. Ein Ort zum Ankommen, mitten in der Stadt.</p>
+    <div class="cta-row">
+      <a href="#speisekarte" class="btn btn-invert">Speisekarte ansehen</a>
+      <a href="#kontakt" class="btn btn-ghost-invert">Anfahrt &amp; Zeiten</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center">
+      <span class="eyebrow">Über uns</span>
+      <h2>Kaffee, wie er sein sollte</h2>
+      <p>Ob schneller Espresso vor der Arbeit oder gemütlicher Nachmittag mit Kuchen: Bei uns ist für jeden Moment das Richtige dabei. Alles frisch zubereitet, jeden Tag.</p>
+    </div>
+  </div>
+</section>
+
+<section id="speisekarte" class="section section-soft">
+  <div class="container" style="max-width:720px;">
+    <div class="section-head center">
+      <span class="eyebrow">Speisekarte</span>
+      <h2>Eine kleine Auswahl</h2>
+    </div>
+    <div class="menu-item"><div><div class="name">Cappuccino</div><div class="desc">Espresso, feinporiger Milchschaum</div></div><div class="price">3,40 €</div></div>
+    <div class="menu-item"><div><div class="name">Hausgemachter Karottenkuchen</div><div class="desc">Mit Frischkäse-Topping</div></div><div class="price">4,20 €</div></div>
+    <div class="menu-item"><div><div class="name">Avocado-Toast</div><div class="desc">Sauerteigbrot, Radieschen, Chiliflocken</div></div><div class="price">7,90 €</div></div>
+    <div class="menu-item"><div><div class="name">Frisch gepresster Orangensaft</div><div class="desc">0,3 l</div></div><div class="price">4,50 €</div></div>
+  </div>
+</section>
+
+<section id="kontakt" class="section">
+  <div class="container">
+    <div class="contact-panel" style="background:#2c1a12;">
+      <div>
+        <span class="eyebrow" style="color:#f0b088;">Besuchen Sie uns</span>
+        <h2 style="color:#fff;">Anfahrt &amp; Öffnungszeiten</h2>
+        <p>Musterstraße 12, 12345 Musterstadt</p>
+      </div>
+      <div class="contact-card" style="background:#3a2015; border-color:#573221;">
+        <div class="contact-row" style="border-color:#573221;"><div><span class="label">Mo–Fr</span>8:00 – 18:00 Uhr</div></div>
+        <div class="contact-row" style="border-color:#573221;"><div><span class="label">Sa</span>9:00 – 16:00 Uhr</div></div>
+        <div class="contact-row" style="border-color:#573221;"><div><span class="label">So</span>geschlossen</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" style="background:#1d110b;">
+  <div class="container footer-bottom">
+    <span>Café Sonnenseite — fiktives Beispielprojekt</span>
+    <span><a href="../index.html">Erstellt von Wirkstatt</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

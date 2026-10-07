@@ -261,9 +261,14 @@ HEADER_RE = re.compile(
     r"authorization|proxy-authorization)\\?['\"]?\s*[:=]\s*)"
     r"(?:(bearer|basic|token)\s+)?([^\s'\"\\]{8,})"
 )
+# CLI-Argumente mit Zugangsdaten. Das blanke "-p" wurde bewusst entfernt: es
+# traf harmlose Dinge wie "--probe", "-py3-none-any.whl" oder "-prime" und
+# zerstoerte damit massenhaft Code/Doku. Echte Passwort-Flags und sshpass
+# bleiben erfasst; ein Token im Wert faengt zusaetzlich TOKEN_RES ab.
 CLI_CRED_RE = re.compile(
-    r"(?i)(--?(?:password|pass|token|api-?key|secret|auth)[=\s]+|-p(?=\S)|sshpass\s+-p\s*)"
-    r"(\S{4,})"
+    r"(?i)(--(?:password|passwd|pass|token|api-?key|access-?token|secret|auth-?token)"
+    r"[=\s]+|sshpass\s+-p\s*)"
+    r"([^\s'\"]{4,})"
 )
 PRIVATE_KEY_RE = re.compile(r"-----BEGIN [A-Z0-9 ]*PRIVATE KEY-----")
 

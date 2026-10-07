@@ -63,13 +63,13 @@ SKIP_DIRS = {
     ".ssh", ".gnupg", "secrets", ".secrets", "credentials", "instance",
     "uploads", "recordings", "vectorstore", "vector_store", "qdrant_storage",
     "chroma", ".chroma", "chroma_db", "chromadb", "faiss_index", "wandb",
-    "jarvis-export", "site-packages",
+    "jarvis-export", "jarvis-backups", "site-packages",
 }
 # Ordner, die nur im Backup fehlen (reproduzierbar, sehr gross).
 BACKUP_SKIP_DIRS = {
     "__pycache__", ".venv", "venv", ".virtualenv", "node_modules",
     ".mypy_cache", ".pytest_cache", ".ruff_cache", ".tox", ".cache",
-    "site-packages", "jarvis-export",
+    "site-packages", "jarvis-export", "jarvis-backups",
 }
 # Ordner, in denen Daten-Dateien (keine Code-Dateien) als privat gelten.
 DATA_DIRS = {
@@ -321,19 +321,76 @@ def is_sqlite(path):
 # Schritt 1: Projektordner finden
 # --------------------------------------------------------------------------
 
+PROJECT_MARKERS = (".git", "requirements.txt", "pyproject.toml", "setup.py",
+                   "setup.cfg", "Pipfile", "poetry.lock")
+BROAD_DIRS = {"/home", "/root", "/opt", "/srv", "/var", "/var/www", "/var/lib",
+              "/usr", "/usr/local", "/etc", "/tmp", "/mnt", "/media"}
+
+
+def too_broad(path):
+    """True fuer Ordner, die sicher mehr als nur JARVIS enthalten
+    (Laufwerk, ganzer Benutzerordner, Systemordner)."""
+    p = Path(os.path.abspath(str(path)))
+    if p == HOME or len(p.parts) <= 1:
+        return True
+    if os.name == "nt":
+        return len(p.parts) <= 3 and low(p.parts[1]) == "users"
+    return str(p) in BROAD_DIRS or p.parent == Path("/home")
+
+
+def project_root(start):
+    """Vom Ordner eines Python-Skripts nach oben bis zum Projekt-Hauptordner
+    (dort, wo z.B. .git oder requirements.txt liegt)."""
+    start = Path(start)
+    cur = start
+    for _ in range(4):
+        if too_broad(cur):
+            break
+        if any((cur / m).exists() for m in PROJECT_MARKERS):
+            return cur
+        if cur.parent == cur:
+            break
+        cur = cur.parent
+    return start
+
+
+def script_dir_from_args(args, cwd):
+    """Ordner des gestarteten Python-Skripts/-Moduls aus der Befehlszeile."""
+    for i, a in enumerate(args[1:], 1):
+        if args[i - 1] == "-m":
+            mod = Path(cwd) / a.split(".")[0]
+            return mod if mod.is_dir() else Path(cwd)
+        if a.endswith(".py"):
+            sp = Path(a) if os.path.isabs(a) else Path(cwd) / a
+            return sp.parent
+    return Path(cwd)
+
+
 def running_jarvis_dirs():
-    """Liest (nur lesend) laufende Prozesse und systemd-Dienste aus."""
+    """Liest (nur lesend) laufende Prozesse und systemd-Dienste aus.
+    Gibt ({ordner: hinweis}, [hinweise_zu_docker]) zurueck."""
     found = {}
+    notes = []
     if sys.platform.startswith("linux"):
+        try:
+            own_ns = os.readlink("/proc/self/ns/mnt")
+        except OSError:
+            own_ns = None
         for pid in os.listdir("/proc"):
             if not pid.isdigit():
                 continue
             try:
-                cmd = Path("/proc", pid, "cmdline").read_bytes().replace(b"\0", b" ").decode("utf-8", "replace")
+                args = [a.decode("utf-8", "replace")
+                        for a in Path("/proc", pid, "cmdline").read_bytes().split(b"\0") if a]
+                cmd = " ".join(args)
                 if "jarvis" not in cmd.lower() or "jarvis_export" in cmd:
                     continue
+                if own_ns and os.readlink("/proc/%s/ns/mnt" % pid) != own_ns:
+                    notes.append("JARVIS scheint (auch) in einem Docker-Container zu laufen: " + cmd[:70])
+                    continue
                 cwd = os.readlink("/proc/%s/cwd" % pid)
-                found[cwd] = "laufender Prozess (PID %s): %s" % (pid, cmd.strip()[:80])
+                root = project_root(script_dir_from_args(args, cwd))
+                found.setdefault(str(root), "laufender Prozess (PID %s): %s" % (pid, cmd.strip()[:80]))
             except OSError:
                 continue
         unit_dirs = [Path("/etc/systemd/system"), Path("/lib/systemd/system"),
@@ -348,21 +405,33 @@ def running_jarvis_dirs():
                     continue
                 if "jarvis" not in txt.lower() and "jarvis" not in unit.name.lower():
                     continue
-                m = re.search(r"(?m)^WorkingDirectory=(.+)$", txt)
-                if m:
-                    found.setdefault(m.group(1).strip(), "systemd-Dienst " + unit.name)
+                m = re.search(r"(?m)^WorkingDirectory=-?(/.+)$", txt)
+                wd = m.group(1).strip() if m else None
+                start = Path(wd) if wd else None
+                e = re.search(r"(?m)^ExecStart=(.+)$", txt)
+                py = re.search(r"(\S+\.py)\b", e.group(1)) if e else None
+                if py:
+                    sp = Path(py.group(1).lstrip("-@"))
+                    if not sp.is_absolute() and wd:
+                        sp = Path(wd) / sp
+                    if sp.is_absolute():
+                        start = sp.parent
+                if start:
+                    found.setdefault(str(project_root(start)), "systemd-Dienst " + unit.name)
     elif os.name == "nt":
         try:
             r = run(["powershell", "-NoProfile", "-Command",
                      "Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match 'jarvis' } | "
                      "ForEach-Object { $_.ExecutablePath + '|' + $_.CommandLine }"], check=False)
             for line in r.stdout.splitlines():
+                if "jarvis_export" in line:
+                    continue
                 for part in re.findall(r"[A-Za-z]:\\[^\"|]+?\.py", line):
-                    p = Path(part).parent
+                    p = project_root(Path(part).parent)
                     found.setdefault(str(p), "laufender Prozess: " + line.strip()[:80])
         except (OSError, RuntimeError):
             pass
-    return found
+    return found, notes
 
 
 def search_jarvis_dirs():
@@ -403,19 +472,31 @@ def count_py(path):
     return n
 
 
+TOO_BROAD_MSG = ("Das ist kein einzelner Projektordner, sondern z.B. dein ganzer Benutzer- "
+                 "oder Systemordner. Darin liegen auch Dinge, die nicht zu JARVIS gehoeren.")
+
+
 def choose_project(argv):
     if len(argv) > 1:
         p = Path(argv[1]).expanduser().resolve()
         if not p.is_dir():
             die("Ordner nicht gefunden: %s" % p)
+        if too_broad(p):
+            die(TOO_BROAD_MSG)
         return p
 
     head("Schritt 1/6: JARVIS-Projektordner suchen (nur lesen)")
-    running = running_jarvis_dirs()
-    candidates = list(running.keys())
-    for d in search_jarvis_dirs():
-        if d not in candidates:
-            candidates.append(d)
+    running, notes = running_jarvis_dirs()
+    candidates = []
+    for d in list(running.keys()) + search_jarvis_dirs():
+        if d in candidates or not Path(d).is_dir():
+            continue
+        if too_broad(d):
+            notes.append("Uebersprungen, weil zu allgemein: %s" % d)
+            continue
+        candidates.append(d)
+    for n in sorted(set(notes)):
+        say("Hinweis: " + n)
     if not candidates:
         say("Kein Ordner mit 'jarvis' im Namen gefunden.")
     for i, d in enumerate(candidates, 1):
@@ -433,9 +514,12 @@ def choose_project(argv):
             p = Path(a).expanduser()
         else:
             continue
-        if p.is_dir():
+        if not p.is_dir():
+            say("Diesen Ordner gibt es nicht. Bitte nochmal.")
+        elif too_broad(p):
+            say(TOO_BROAD_MSG + " Bitte den JARVIS-Ordner darin waehlen.")
+        else:
             return p.resolve()
-        say("Diesen Ordner gibt es nicht. Bitte nochmal.")
 
 
 # --------------------------------------------------------------------------
@@ -822,6 +906,9 @@ def push(staging, env):
     g("add", "-A")
     files = g("ls-files").stdout.splitlines()
     say("Bereit zum Hochladen: %d Dateien." % len(files))
+    if len(files) > 3000:
+        say("ACHTUNG: Das sind ungewoehnlich viele Dateien. Pruefe, ob wirklich nur der")
+        say("JARVIS-Ordner gewaehlt wurde. Im Zweifel 'nein' eingeben und mir die Liste schicken.")
     say("Vorschau (die ersten 40):")
     for f in files[:40]:
         say("  " + f)

@@ -3,37 +3,212 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brick Deals DE</title>
-<meta name="description" content="Brick Deals DE zeigt auf Pinterest LEGO-Sets, Angebote und Geschenkideen. Einige Links sind Affiliate-Links.">
+<title>Brick Deals DE | LEGO-Sets mit geprüften Preisen</title>
+<meta name="description" content="Brick Deals DE stellt ausgewählte LEGO-Sets mit Eckdaten und geprüften Preisen vor, jeweils mit Prüfdatum. Unabhängiges Fan-Projekt ohne Verbindung zur LEGO Gruppe.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
   :root { --accent: #d1282d; --accent-soft: #fde3e3; --accent-dark: #a31f23; }
-  .bd-hero { background: linear-gradient(160deg,#151515,#2a2a2a); color:#fff; padding:90px 0 70px; }
-  .bd-hero p.lead { color:#d8d8d8; max-width:520px; }
+  .bd-hero { background: linear-gradient(160deg,#151515,#2a2a2a); color:#fff; padding:80px 0 64px; }
+  .bd-hero p.lead { color:#d8d8d8; max-width:560px; }
+  .set-card { display:flex; flex-direction:column; gap:12px; padding:24px; }
+  .set-card h3 { margin:0; }
+  .set-card .eyebrow { margin-bottom:0; }
+  .set-facts { list-style:none; display:flex; gap:8px; flex-wrap:wrap; padding:0; margin:0; }
+  .set-facts li { background:var(--bg-soft); border:1px solid var(--line); border-radius:999px; padding:3px 12px; font-size:0.85rem; color:var(--text-soft); }
+  .set-prices { border-top:1px solid var(--line); padding-top:12px; display:grid; gap:6px; }
+  .price-row { display:flex; justify-content:space-between; align-items:baseline; gap:4px 12px; flex-wrap:wrap; }
+  .price-row .lbl { color:var(--text-soft); font-size:0.88rem; }
+  .price-row strong { font-size:1.15rem; }
+  .price-diff { color:var(--accent-dark); font-size:0.85rem; font-weight:600; }
+  .price-checked { font-size:0.8rem; color:var(--text-soft); margin:0; }
+  .set-card .cta-row { margin-top:auto; gap:10px; }
+  .set-card .btn { padding:10px 18px; font-size:0.9rem; }
+  .info-list { max-width:720px; margin:0 auto 32px; padding:0; list-style:none; display:grid; gap:18px; }
+  .info-list h3 { margin-bottom:0.2em; }
+  .info-list p { margin:0; }
+  .bd-note { max-width:720px; margin:0 auto; }
 </style>
 </head>
 <body>
 
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand">Brick Deals DE</a>
+  </div>
+</header>
+
 <section class="bd-hero">
   <div class="container">
-    <span class="eyebrow" style="color:#ff8a8d;">LEGO Deals &amp; Geschenkideen</span>
+    <span class="eyebrow" style="color:#ff8a8d;">LEGO-Sets im Überblick</span>
     <h1>Brick Deals DE</h1>
-    <p class="lead">Wir stellen auf Pinterest LEGO-Sets, Angebote und Geschenkideen vor. Einige Links in unseren Pins sind Affiliate-Links über ein offizielles Partnerprogramm.</p>
+    <p class="lead">Ausgewählte LEGO-Sets mit den wichtigsten Eckdaten und Preisen, die ich selbst nachgeprüft habe. Jede Preisangabe trägt ihr Prüfdatum.</p>
     <div class="cta-row">
-      <a href="https://www.pinterest.com/razwdler/" target="_blank" rel="noopener" class="btn btn-invert">Zu Pinterest</a>
-      <a href="datenschutz.html" class="btn btn-ghost-invert">Datenschutz</a>
+      <a href="#sets" class="btn btn-invert">Zu den Sets</a>
+      <a href="#info" class="btn btn-ghost-invert">So entstehen die Angaben</a>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container" style="max-width:640px;">
+<section class="section section-soft" id="sets">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Auswahl</span>
+      <h2>Sieben Sets, genau angeschaut</h2>
+      <p>Teile, Altersangabe und LEGO-Preis stammen von der offiziellen Produktseite bei LEGO.com. Dazu steht der günstigste Preis laut idealo. Alle Angaben wurden am 03.10.2026 geprüft (LEGO.com um 18:20 Uhr, idealo um 18:26 Uhr).</p>
+    </div>
+
+    <div class="grid grid-3">
+
+      <article class="card set-card">
+        <span class="eyebrow">Botanicals · Set 10313</span>
+        <h3>Wildblumenstrauß</h3>
+        <p>Ein bunter Wildblumenstrauß zum Selberbauen. LEGO beschreibt das Set als entspanntes Bauprojekt für Naturfreunde und Blumenliebhaber.</p>
+        <ul class="set-facts"><li>939 Teile</li><li>ab 18 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>59,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>38,97 €</strong></div>
+          <span class="price-diff">35 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/wildflower-bouquet-10313" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/202283713_-icons-botanical-collection-wildblumenstrauss-10313-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+      <article class="card set-card">
+        <span class="eyebrow">Botanicals · Set 10342</span>
+        <h3>Schöner Rosafarbener Blumenstrauß</h3>
+        <p>Ein rosafarbener Blumenstrauß aus Steinen, der laut LEGO Orchideen, Ranunkeln und eine Dahlie enthält. Gedacht als ruhiges Bauprojekt für Erwachsene.</p>
+        <ul class="set-facts"><li>749 Teile</li><li>ab 18 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>59,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>42,86 €</strong></div>
+          <span class="price-diff">29 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/pretty-pink-flower-bouquet-10342" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/205109708_-botanical-collection-schoener-rosafarbener-blumenstrauss-10342-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+      <article class="card set-card">
+        <span class="eyebrow">Botanicals · Set 10373</span>
+        <h3>Mini-Bonsais</h3>
+        <p>Drei kleine Bonsai-Bäume zum Bauen: ein Ginkgo mit gelben Blättern, eine Japanische Schwarzkiefer und ein Japanischer Blauregen mit hängenden lilafarbenen Blumen.</p>
+        <ul class="set-facts"><li>709 Teile</li><li>ab 18 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>59,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>49,00 €</strong></div>
+          <span class="price-diff">18 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/mini-bonsai-trees-10373" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/206811876_-botanicals-mini-bonsai-10373-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+      <article class="card set-card">
+        <span class="eyebrow">Architecture · Set 21066</span>
+        <h3>New York City – The Big Apple</h3>
+        <p>Die Skyline von New York City mit bekannten Sehenswürdigkeiten wie der Brooklyn Bridge, als Deko für Reiseliebhaber und Architekturfans.</p>
+        <ul class="set-facts"><li>1.465 Teile</li><li>ab 18 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>139,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>93,99 €</strong></div>
+          <span class="price-diff">33 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/new-york-city-the-big-apple-21066" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/210283651_-architecture-new-york-city-the-big-apple-21066-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+      <article class="card set-card">
+        <span class="eyebrow">Architecture · Set 21063</span>
+        <h3>Schloss Neuschwanstein</h3>
+        <p>Das bayerische Schloss als detailreiches Ausstellungsstück in einer zerklüfteten Waldlandschaft, ein Set für Fans von Reisen, Architektur und Geschichte.</p>
+        <ul class="set-facts"><li>3.455 Teile</li><li>ab 18 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>269,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>184,99 €</strong></div>
+          <span class="price-diff">31 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/neuschwanstein-castle-21063" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/206005382_-architecture-schloss-neuschwanstein-21063-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+      <article class="card set-card">
+        <span class="eyebrow">Architecture · Set 21067</span>
+        <h3>Tower Bridge</h3>
+        <p>Die Londoner Tower Bridge als detailreiches Architektur-Modell zum Sammeln und Ausstellen. Bei LEGO.com war das Set am 03.10.2026 als „Neu“ gekennzeichnet.</p>
+        <ul class="set-facts"><li>3.745 Teile</li><li>ab 18 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>299,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>204,23 €</strong></div>
+          <span class="price-diff">32 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/tower-bridge-21067" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/212182358_-architecture-tower-bridge-21067-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+      <article class="card set-card">
+        <span class="eyebrow">Star Wars · Set 75456</span>
+        <h3>LEGO Star Wars Adventskalender 2026</h3>
+        <p>Ein Adventskalender für junge Star-Wars-Fans mit Motiven aus „Der Mandalorianer“. Hinter den Türen stecken laut LEGO Figuren und Mini-Modelle von Fahrzeugen.</p>
+        <ul class="set-facts"><li>293 Teile</li><li>ab 6 Jahren</li></ul>
+        <div class="set-prices">
+          <div class="price-row"><span class="lbl">LEGO.com</span><strong>34,99 €</strong></div>
+          <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>24,63 €</strong></div>
+          <span class="price-diff">30 % unter dem LEGO-Preis</span>
+          <p class="price-checked">Geprüft am 03.10.2026. Versandkosten können hinzukommen.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.lego.com/de-de/product/advent-calendar-2026-75456" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
+          <a class="btn btn-ghost" href="https://www.idealo.de/preisvergleich/OffersOfProduct/210262293_-star-wars-advent-calendar-2026-75456-lego.html" target="_blank" rel="noopener noreferrer">Preisvergleich bei idealo</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" id="info">
+  <div class="container">
     <div class="section-head center">
-      <span class="eyebrow">Über uns</span>
-      <h2>Kuratierte LEGO-Inhalte</h2>
-      <p>Brick Deals DE durchsucht regelmäßig aktuelle LEGO-Sets, Neuheiten und saisonale Angebote und stellt daraus Pinterest-Inhalte zusammen, von Deko-Sets bis Geschenkideen für Kinder und Erwachsene.</p>
+      <span class="eyebrow">Transparenz</span>
+      <h2>So entstehen die Angaben</h2>
+    </div>
+
+    <ul class="info-list">
+      <li>
+        <h3>Eckdaten</h3>
+        <p>Teile, Altersangabe und der Preis bei LEGO.com stammen von der jeweiligen offiziellen Produktseite. Ich habe sie am 03.10.2026 um 18:20 Uhr abgelesen.</p>
+      </li>
+      <li>
+        <h3>Preisvergleich</h3>
+        <p>Der günstigste Preis stammt von der idealo-Produktseite des Sets und wurde am 03.10.2026 um 18:26 Uhr abgelesen. Versandkosten können hinzukommen, und Preise ändern sich laufend. Verbindlich ist immer der Preis im jeweiligen Shop.</p>
+      </li>
+      <li>
+        <h3>Aktualität</h3>
+        <p>Diese Seite wird nicht automatisch aktualisiert. Wer aktuelle Preise braucht, folgt den Links zu den Shops.</p>
+      </li>
+    </ul>
+
+    <div class="disclaimer-box bd-note">
+      Brick Deals DE ist ein unabhängiges Fan-Projekt und steht in keiner Verbindung zur LEGO Gruppe. LEGO® ist eine Marke der LEGO Gruppe, die diese Seite weder sponsert noch autorisiert noch unterstützt. Alle genannten Produkt- und Markennamen gehören ihren jeweiligen Inhabern.
+      Alle Links auf dieser Seite sind normale Links ohne Provision, es gibt hier keine Partner- oder Affiliate-Links. Sollte sich das ändern, kennzeichne ich es an dieser Stelle und bei den betroffenen Links deutlich.
     </div>
   </div>
 </section>
@@ -41,7 +216,7 @@
 <footer class="site-footer">
   <div class="container footer-bottom">
     <span>Brick Deals DE · ein Projekt von Wirkstatt</span>
-    <span><a href="datenschutz.html">Datenschutz</a> · <a href="../index.html">Wirkstatt</a></span>
+    <span><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a> · <a href="../index.html">Wirkstatt</a></span>
   </div>
 </footer>
 

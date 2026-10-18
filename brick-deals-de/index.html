@@ -29,6 +29,13 @@
   .info-list h3 { margin-bottom:0.2em; }
   .info-list p { margin:0; }
   .bd-note { max-width:720px; margin:0 auto; }
+  /* Direktlink auf eine Karte (…/brick-deals-de/#set-21063): die feste Kopfzeile darf sie nicht verdecken */
+  .set-card { scroll-margin-top:96px; }
+  .set-card:target { outline:3px solid var(--accent); outline-offset:4px; }
+  /* Preis, der sich nicht verlässlich neu prüfen ließ: offen als nicht aktuell gekennzeichnet */
+  .set-card.preis-alt .set-prices .price-row strong { color:var(--text-soft); opacity:0.6; }
+  .set-card.preis-alt .price-checked,
+  .set-card.preis-alt .price-diff { color:#8a4b00; font-weight:600; }
 </style>
 </head>
 <body>
@@ -61,7 +68,7 @@
 
     <div class="grid grid-3">
 
-      <article class="card set-card">
+      <article class="card set-card" id="set-10313">
         <span class="eyebrow">Botanicals · Set 10313</span>
         <h3>Wildblumenstrauß</h3>
         <p>Ein bunter Wildblumenstrauß zum Selberbauen. LEGO beschreibt das Set als entspanntes Bauprojekt für Naturfreunde und Blumenliebhaber.</p>
@@ -78,7 +85,7 @@
         </div>
       </article>
 
-      <article class="card set-card">
+      <article class="card set-card" id="set-10342">
         <span class="eyebrow">Botanicals · Set 10342</span>
         <h3>Schöner Rosafarbener Blumenstrauß</h3>
         <p>Ein rosafarbener Blumenstrauß aus Steinen, der laut LEGO Orchideen, Ranunkeln und eine Dahlie enthält. Gedacht als ruhiges Bauprojekt für Erwachsene.</p>
@@ -95,7 +102,7 @@
         </div>
       </article>
 
-      <article class="card set-card">
+      <article class="card set-card" id="set-10373">
         <span class="eyebrow">Botanicals · Set 10373</span>
         <h3>Mini-Bonsais</h3>
         <p>Drei kleine Bonsai-Bäume zum Bauen: ein Ginkgo mit gelben Blättern, eine Japanische Schwarzkiefer und ein Japanischer Blauregen mit hängenden lilafarbenen Blumen.</p>
@@ -112,7 +119,7 @@
         </div>
       </article>
 
-      <article class="card set-card">
+      <article class="card set-card preis-alt" id="set-21066">
         <span class="eyebrow">Architecture · Set 21066</span>
         <h3>New York City – The Big Apple</h3>
         <p>Die Skyline von New York City mit bekannten Sehenswürdigkeiten wie der Brooklyn Bridge, als Deko für Reiseliebhaber und Architekturfans.</p>
@@ -120,8 +127,8 @@
         <div class="set-prices">
           <div class="price-row"><span class="lbl">LEGO.com</span><strong>139,99 €</strong></div>
           <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>76,90 €</strong></div>
-          <span class="price-diff">45 % unter dem LEGO-Preis</span>
-          <p class="price-checked">Geprüft am 14.10.2026 um 12:11 Uhr. Versandkosten können hinzukommen.</p>
+          <span class="price-diff">Abstand zum LEGO-Preis zurzeit nicht verlässlich</span>
+          <p class="price-checked">Preis nicht aktuell: zuletzt geprüft am 14.10.2026 um 12:11 Uhr, seitdem keine verlässliche Neuprüfung. Den aktuellen Preis bitte im Shop ansehen.</p>
         </div>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://www.lego.com/de-de/product/new-york-city-the-big-apple-21066" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
@@ -129,7 +136,7 @@
         </div>
       </article>
 
-      <article class="card set-card">
+      <article class="card set-card preis-alt" id="set-21063">
         <span class="eyebrow">Architecture · Set 21063</span>
         <h3>Schloss Neuschwanstein</h3>
         <p>Das bayerische Schloss als detailreiches Ausstellungsstück in einer zerklüfteten Waldlandschaft, ein Set für Fans von Reisen, Architektur und Geschichte.</p>
@@ -137,8 +144,8 @@
         <div class="set-prices">
           <div class="price-row"><span class="lbl">LEGO.com</span><strong>269,99 €</strong></div>
           <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>184,99 €</strong></div>
-          <span class="price-diff">31 % unter dem LEGO-Preis</span>
-          <p class="price-checked">Geprüft am 11.10.2026 um 18:11 Uhr. Versandkosten können hinzukommen.</p>
+          <span class="price-diff">Abstand zum LEGO-Preis zurzeit nicht verlässlich</span>
+          <p class="price-checked">Preis nicht aktuell: zuletzt geprüft am 11.10.2026 um 18:11 Uhr, seitdem keine verlässliche Neuprüfung. Den aktuellen Preis bitte im Shop ansehen.</p>
         </div>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://www.lego.com/de-de/product/neuschwanstein-castle-21063" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
@@ -146,7 +153,7 @@
         </div>
       </article>
 
-      <article class="card set-card">
+      <article class="card set-card preis-alt" id="set-21067">
         <span class="eyebrow">Architecture · Set 21067</span>
         <h3>Tower Bridge</h3>
         <p>Die Londoner Tower Bridge als detailreiches Architektur-Modell zum Sammeln und Ausstellen. Bei LEGO.com war das Set am 03.10.2026 als „Neu“ gekennzeichnet.</p>
@@ -154,8 +161,8 @@
         <div class="set-prices">
           <div class="price-row"><span class="lbl">LEGO.com</span><strong>299,99 €</strong></div>
           <div class="price-row"><span class="lbl">Günstigster Preis laut idealo</span><strong>215,98 €</strong></div>
-          <span class="price-diff">28 % unter dem LEGO-Preis</span>
-          <p class="price-checked">Geprüft am 11.10.2026 um 18:11 Uhr. Versandkosten können hinzukommen.</p>
+          <span class="price-diff">Abstand zum LEGO-Preis zurzeit nicht verlässlich</span>
+          <p class="price-checked">Preis nicht aktuell: zuletzt geprüft am 11.10.2026 um 18:11 Uhr, seitdem keine verlässliche Neuprüfung. Den aktuellen Preis bitte im Shop ansehen.</p>
         </div>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://www.lego.com/de-de/product/tower-bridge-21067" target="_blank" rel="noopener noreferrer">Bei LEGO ansehen</a>
@@ -163,7 +170,7 @@
         </div>
       </article>
 
-      <article class="card set-card">
+      <article class="card set-card" id="set-75456">
         <span class="eyebrow">Star Wars · Set 75456</span>
         <h3>LEGO Star Wars Adventskalender 2026</h3>
         <p>Ein Adventskalender für junge Star-Wars-Fans mit Motiven aus „Der Mandalorianer“. Hinter den Türen stecken laut LEGO Figuren und Mini-Modelle von Fahrzeugen.</p>
@@ -204,7 +211,7 @@
       </li>
       <li>
         <h3>Aktualität</h3>
-        <p>Die Preise werden mehrmals täglich automatisch nachgeprüft; jede Karte nennt ihren Prüfzeitpunkt. Verbindlich ist immer der Preis im jeweiligen Shop.</p>
+        <p>Die Preise werden mehrmals täglich automatisch nachgeprüft; jede Karte nennt ihren Prüfzeitpunkt. Lässt sich ein Preis nach zwei Tagen nicht verlässlich neu prüfen, steht er ausdrücklich als nicht aktuell da. Verbindlich ist immer der Preis im jeweiligen Shop.</p>
       </li>
     </ul>
 

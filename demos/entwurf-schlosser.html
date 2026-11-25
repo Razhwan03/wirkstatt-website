@@ -6,22 +6,36 @@
 <title>Entwurf: Metallbau | Wirkstatt</title>
 <meta name="description" content="Entwurf von Wirkstatt: so könnte die Webseite für einen Betrieb aussehen. Beispieltexte.">
 <meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="stylesheet" href="../assets/style.css">
 <style>
-  .hw-hero { background: linear-gradient(160deg,#161d24,#2c3843); color:#fff; padding:90px 0 70px; }
-  .hw-hero p.lead { color:#c3ccd3; max-width:520px; }
+  [hidden] { display: none !important; }
+  .hw-hero { background: radial-gradient(120% 90% at 85% 0%, #2a3a8f 0%, rgba(42,58,143,0) 55%), linear-gradient(160deg,#141a21,#2c3843);
+              color:#fff; padding:96px 0 76px; }
+  .hw-hero p.lead { color:#c3ccd3; max-width:540px; }
+  .hw-hero h1 { word-break: break-word; }
+  .hw-nav { position: sticky; top: 0; z-index: 5; background: rgba(20,26,33,.92); color:#fff; backdrop-filter: blur(6px); }
+  .hw-nav .container { display:flex; justify-content:space-between; align-items:center; gap:16px; padding-top:10px; padding-bottom:10px; }
+  .hw-nav strong { font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hw-nav a { color:#fff; font-weight:600; font-size:.9rem; text-decoration:none; white-space:nowrap; }
+  .hw-platz { border: 1px dashed var(--accent); border-radius: 14px; padding: 18px 20px; background: var(--accent-soft); }
+  .hw-platz small { display:block; color: var(--accent-dark); font-weight:600; margin-bottom:6px; letter-spacing:.04em; text-transform:uppercase; }
+  .bewegt .auftritt { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .bewegt .auftritt.da { opacity: 1; transform: none; }
 </style>
 </head>
 <body>
 
 <div class="demo-banner">Das ist ein Entwurf von Wirkstatt. So könnte die Webseite für Ihren Betrieb aussehen. Die Texte sind Beispiele: Ihre echten Leistungen, Bilder und Kontaktdaten setze ich gemeinsam mit Ihnen ein.</div>
 
+<nav class="hw-nav"><div class="container"><strong data-name>Ihr Betrieb</strong><a href="#kontakt">Anfrage stellen</a></div></nav>
+
 <section class="hw-hero">
   <div class="container">
-    <span class="eyebrow">Metallbau · Raum Cloppenburg</span>
-    <h1 id="betrieb">Ihr Betrieb</h1>
-    <p class="lead">Metallbau für Privatkunden und Betriebe in der Region.</p>
+    <span class="eyebrow">Metallbau · <span data-ort>Raum Cloppenburg</span></span>
+    <h1 id="betrieb" data-name>Ihr Betrieb</h1>
+    <p class="lead">Metallbau für Privatkunden und Betriebe aus <span data-ort-umgebung>der Region</span>.</p>
     <div class="cta-row">
       <a href="#leistungen" class="btn btn-invert">Leistungen ansehen</a>
       <a href="#kontakt" class="btn btn-ghost-invert">Anfrage stellen</a>
@@ -33,38 +47,84 @@
   <div class="container">
     <div class="section-head center"><span class="eyebrow">Leistungen (Beispieltexte)</span><h2>Metallbau aus einer Hand</h2></div>
     <div class="grid grid-3">
-      <div class="card">
+      <div class="card auftritt" data-leistung="0">
         <h3>Geländer und Treppen</h3>
         <p>Aus Stahl und Edelstahl, nach Maß gefertigt.</p>
       </div>
-      <div class="card">
+      <div class="card auftritt" data-leistung="1">
         <h3>Tore und Zäune</h3>
         <p>Fertigung und Montage.</p>
       </div>
-      <div class="card">
+      <div class="card auftritt" data-leistung="2">
         <h3>Reparatur</h3>
         <p>Schweißarbeiten und Instandsetzung.</p>
+      </div>
+      <div class="card auftritt" data-leistung="3" hidden>
+        <h3>Edelstahl</h3>
+        <p>Arbeiten aus Edelstahl für innen und außen.</p>
+      </div>
+      <div class="card auftritt" data-leistung="4" hidden>
+        <h3>Überdachungen</h3>
+        <p>Vordächer, Carports und Terrassendächer aus Metall.</p>
+      </div>
+      <div class="card auftritt" data-leistung="5" hidden>
+        <h3>Stahlbau</h3>
+        <p>Hallen, Bühnen und Tragwerke aus Stahl.</p>
+      </div>
+      <div class="card auftritt" data-leistung="6" hidden>
+        <h3>Blechbearbeitung</h3>
+        <p>Zuschnitt, Kanten und Formteile aus Blech.</p>
+      </div>
+      <div class="card auftritt" data-leistung="7" hidden>
+        <h3>Landtechnik</h3>
+        <p>Reparatur und Umbau von Maschinen und Anhängern.</p>
       </div>
     </div>
   </div>
 </section>
 
+<section class="section section-soft">
+  <div class="container" style="max-width:760px;">
+    <div class="auftritt">
+      <span class="eyebrow">Einsatzgebiet</span>
+      <h2>Unterwegs in Ihrer Region: <span data-ort-umgebung>Raum Cloppenburg</span></h2>
+      <p class="hw-platz"><small>Platzhalter</small>Hier steht später, wo Sie arbeiten, wie Kunden Sie erreichen und wann Sie für sie da sind.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="max-width:760px;">
+    <div class="auftritt">
+      <span class="eyebrow">Über uns</span>
+      <h2 data-name>Ihr Betrieb</h2>
+      <p class="hw-platz"><small>Platzhalter</small>Hier stellen Sie sich, Ihr Team und Ihre Werkstatt vor, mit eigenen Fotos und in Ihren Worten.</p>
+    </div>
+  </div>
+</section>
+
 <section id="kontakt" class="section section-soft">
-  <div class="container" style="max-width:640px;">
-    <h2>Gefällt Ihnen der Entwurf?</h2>
-    <p>Rufen Sie mich an oder schreiben Sie mir. Den Festpreis und den Ablauf finden Sie auf meiner
-    <a href="../handwerk/">Seite für Handwerksbetriebe</a>.</p>
-    <p>Razhwan Qadir, Wirkstatt<br>Telefon: <a href="tel:+4915737548239">0157 37548239</a><br>E-Mail: <a href="mailto:razw.dler@icloud.com">razw.dler@icloud.com</a></p>
+  <div class="container" style="max-width:760px;">
+    <div class="auftritt">
+      <span class="eyebrow">Kontakt</span>
+      <h2>So erreichen Kunden Sie</h2>
+      <p class="hw-platz"><small>Platzhalter</small>Hier stehen später Ihre Telefonnummer, Ihre E-Mail-Adresse und Ihre Anschrift, mit einem Knopf zum Anrufen.</p>
+    </div>
+    <div class="auftritt" style="margin-top:40px;">
+      <h2>Gefällt Ihnen der Entwurf?</h2>
+      <p>Rufen Sie mich an oder schreiben Sie mir. Den Festpreis und den Ablauf finden Sie hier: <a href="../handwerk/">Seite für Handwerksbetriebe</a></p>
+      <p>Razhwan Qadir, Wirkstatt<br>Telefon: <a href="tel:+4915737548239">0157 37548239</a><br>E-Mail: <a href="mailto:razw.dler@icloud.com">razw.dler@icloud.com</a></p>
+    </div>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="container footer-bottom">
-    <span>Entwurf von Wirkstatt</span>
+    <span>Entwurf von Wirkstatt für <span data-name>Ihren Betrieb</span></span>
     <span><a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a></span>
   </div>
 </footer>
 
-<script>(function(){try{var n=decodeURIComponent(location.hash.slice(1)).replace(/[\u0000-\u001f<>]/g,"").trim().slice(0,80);if(n){document.getElementById("betrieb").textContent=n;document.title=n+" | Entwurf von Wirkstatt";}}catch(e){}})();</script>
+<script>(function(){try{var h=location.hash.slice(1),n="",o="",l="";if(/(^|&)n=/.test(h)){var q=new URLSearchParams(h);n=q.get("n")||"";o=q.get("o")||"";l=q.get("l")||"";}else{n=decodeURIComponent(h);}var s=function(t,m){return String(t||"").replace(/[\u0000-\u001f<>]/g,"").replace(/\s+/g," ").trim().slice(0,m);};n=s(n,80);o=s(o,40);l=String(l).replace(/[^0-9]/g,"").slice(0,9);var alle=function(a,f){var e=document.querySelectorAll("["+a+"]");for(var i=0;i<e.length;i++)f(e[i]);};if(n){alle("data-name",function(e){e.textContent=n;});document.title=n+" | Entwurf von Wirkstatt";}if(o){alle("data-ort",function(e){e.textContent=o;});alle("data-ort-umgebung",function(e){e.textContent=o+" und Umgebung";});}if(l){alle("data-leistung",function(e){e.hidden=l.indexOf(e.getAttribute("data-leistung"))<0;});}}catch(e){}try{if(window.IntersectionObserver&&!(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches)){document.documentElement.className+=" bewegt";var b=new IntersectionObserver(function(x){x.forEach(function(y){if(y.isIntersecting){y.target.className+=" da";b.unobserve(y.target);}});},{threshold:0.15});var r=document.querySelectorAll(".auftritt");for(var j=0;j<r.length;j++)b.observe(r[j]);}}catch(e){}})();</script>
 </body>
 </html>
